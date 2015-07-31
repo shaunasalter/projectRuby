@@ -18,6 +18,18 @@ describe "Timer" do
     @timer.seconds.should == 0
   end
 
+  describe 'padded' do
+    it 'pads zero' do
+      @timer.padded(0).should == '00'
+    end
+    it 'pads one' do
+      @timer.padded(1).should == '01'
+    end
+    it "doesn't pad a two-digit number" do
+      @timer.padded(12).should == '12'
+    end
+  end
+
   describe 'time_string' do
     it "should display 0 seconds as 00:00:00" do
       @timer.seconds = 0
@@ -45,16 +57,6 @@ describe "Timer" do
   # Uncomment these specs if you want to test-drive that
   # method, then call that method from inside of time_string.
   #
-  # describe 'padded' do
-  #   it 'pads zero' do
-  #     @timer.padded(0).should == '00'
-  #   end
-  #   it 'pads one' do
-  #     @timer.padded(1).should == '01'
-  #   end
-  #   it "doesn't pad a two-digit number" do
-  #     @timer.padded(12).should == '12'
-  #   end
-  # end
+  
 
 end
